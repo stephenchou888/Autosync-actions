@@ -1,9 +1,13 @@
 name: forks autosync
 
 on:
-  push:
-    branches:
-      -master
+  repository_dispatch:
+  workflow_dispatch:
+    inputs:
+      ssh:
+        description: 'SSH connection to Actions'
+        required: false
+        default: 'false'
       
   schedule:
     - cron: 0 12 * * * # 每隔12小时
